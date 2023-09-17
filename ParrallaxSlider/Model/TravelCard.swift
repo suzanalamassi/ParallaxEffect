@@ -8,15 +8,21 @@
 import Foundation
 
 
-struct TravelCard: Identifiable, Hashable {
-	var id: UUID = .init()
-	var title: String
-	var subTitle: String
-	var image: String
+protocol CardItem: Identifiable {
+    var image: String { get }
+    var title: String { get }
+    var subTitle: String { get }
+}
+struct TravelCard: CardItem {
+    let id = UUID()
+    let image: String
+    let title: String
+    let subTitle: String
 }
 
-var travelCard: [TravelCard] = [
-	.init(title: "Santorini", subTitle: "Greece", image: "Pic 1"),
-	.init(title: "Maldives", subTitle: "Archipelagic", image: "Pic 2"),
-	.init(title: "Cappadocia", subTitle: "Turkey", image: "Pic 3"),
+//sideNote: I removed the spaces 
+var travelCards: [TravelCard] = [
+    .init(image: "Pic1", title: "Toronto", subTitle: "Ontario"),
+    .init(image: "Pic2", title: "Hamilton", subTitle: "Ontario"),
+    .init(image: "Pic3", title: "London", subTitle: "Ontario"),
 ]
